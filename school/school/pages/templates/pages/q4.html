@@ -1,0 +1,30 @@
+<h1>Subjects</h1>
+<table border="1">
+    <thead>
+        <th>Name</th>
+        <th>No of Students</th>
+        <th>No of Teachers</th>
+        <th>Total Hours</th>
+    </thead>
+
+    <tbody>
+        {% for subject in subjects %}
+            <tr>
+                <td>
+                    {{ subject.name }}
+                </td>
+
+                <td>
+                    {{ subject.teacher_count }}
+                </td>
+
+                <td>
+                    {{ subject.students_count }}
+                </td>
+
+                <td>
+                    {{ subject.total_hours }}
+                </td>
+        {% endfor %}
+    </tbody>
+</table>

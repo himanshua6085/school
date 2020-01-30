@@ -1,0 +1,34 @@
+<h1>Classrooms</h1>
+<table border="1">
+    <thead>
+        <th>Name</th>
+        <th>Subjects</th>
+        <th>Teachers</th>
+    </thead>
+
+    <tbody>
+        {% for classroom in classrooms %}
+            <tr>
+                <td>
+                    {{ classroom.name }}
+                </td>
+
+                <td>
+                    <ul>
+                        {% for subject in classroom.subjects %}
+                            <li>{{ subject }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+
+                <td>
+                    <ul>
+                        {% for teacher in classroom.teachers %}
+                            <li>{{ teacher }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

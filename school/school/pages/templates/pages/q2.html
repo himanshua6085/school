@@ -1,0 +1,51 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+    jQuery(document).ready(function(){
+        jQuery("#search").click(function(){
+            var teacher_name = jQuery("#teacher_name").val()
+            if(teacher_name == "") {
+                alert("Enter teacher name");
+            } else {
+                jQuery.ajax({
+                    url : '/q2',
+                    data : {
+                        teacher_name : teacher_name
+                    },
+                    success : function(data){
+                        abc = data;
+                        var students = data.students;
+                        jQuery("#students").html("");
+                        if(students.length == 0) {
+                            alert("Not Found");
+                        } else {
+                            jQuery.each(students, function(i, v){
+                                jQuery("#students").append("<li>" + v + "</li>");
+                            })
+                        }
+                    },
+                    error : function(){
+                        alert("Error");
+                    }
+                });
+            }
+        });
+    });
+
+</script>
+
+<form>
+    <div>
+        <label for="teacher_name">Teacher Name</label>
+        <input type="text" id="teacher_name" name="teacher_name" placeholder="Name to Search" />
+    </div>
+
+    <div>
+        <input type="button" id="search" value="Search"/>
+    </div>
+
+    <div>
+        <ul id="students">
+        </ul>
+    </div>
+</form>
